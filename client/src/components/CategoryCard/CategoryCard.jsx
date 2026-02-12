@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 import "./CategoryCard.css";
 
-const CategoryCard=(item)=>{
+function CategoryCard({ card }) {
   return (
     <Link to="/gigs?cat=design">
-      <div className="catCard">
+      <div className="categoryCard">
         <img src={card.img} alt="" />
         <span className="desc">{card.desc}</span>
         <span className="title">{card.title}</span>
@@ -12,5 +13,4 @@ const CategoryCard=(item)=>{
     </Link>
   );
 }
-
 export default CategoryCard;

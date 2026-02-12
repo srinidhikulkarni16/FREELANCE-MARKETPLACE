@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./Navbar.css";
 
 function Navbar() {
   const [active, setActive] = useState(false);
@@ -26,62 +25,141 @@ function Navbar() {
   };
 
   return (
-    <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
-      <div className="container">
-        <div className="logo">
-          <Link className="link" to="/">
-            <span className="nav-links">NYX</span>
-          </Link> 
+    <div
+      className={`${
+        active || pathname !== "/" ? "bg-[#0a1b1b]" : "bg-[#1a2e2e]"
+      } flex flex-col items-center text-white sticky top-0 z-[999] transition-all duration-[1500ms] ease-in-out w-full`}
+    >
+      {/* Top Navbar */}
+      <div className="w-full flex justify-evenly items-center py-5 px-0">
+        {/* Logo */}
+        <div className="text-[40px] font-extrabold">
+          <Link className="no-underline text-inherit" to="/">
+            <span className="whitespace-nowrap font-normal text-4xl font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif]">
+              NYX
+            </span>
+          </Link>
         </div>
-        <div className="links">
-          <span className="nav-links">NYX Business</span>
-          <span className="nav-links">Explore</span>
-          <span className="nav-links"> English</span>
-          {!currentUser?.isSeller && <span >Become a Seller</span>}
-          {currentUser ? (
-            <div className="user" onClick={()=>setOpen(!open)}>
 
+        {/* Top Links */}
+        <div className="flex gap-6 items-center font-medium font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-xl">
+          <span className="whitespace-nowrap font-normal text-xl">
+            NYX Business
+          </span>
+          <span className="whitespace-nowrap font-normal text-xl">Explore</span>
+          <span className="whitespace-nowrap font-normal text-xl">English</span>
+          {!currentUser?.isSeller && (
+            <span className="whitespace-nowrap font-normal text-xl">
+              Become a Seller
+            </span>
+          )}
+
+          {currentUser ? (
+            <div
+              className="flex items-center gap-[10px] cursor-pointer relative text-xl"
+              onClick={() => setOpen(!open)}
+            >
               <span>{currentUser?.username}</span>
-              {open && <div className="options">
-                {currentUser.isSeller && (
-                  <>
-                    <Link className="link" to="/mygigs">Gigs</Link>
-                    <Link className="link" to="/add">Add New Gig</Link>
-                  </>
-                )}
-                <Link className="link" to="/orders">Orders</Link>
-                <Link className="link" to="/messages">Messages</Link>
-                <Link className="link" to="/">Logo</Link>
-              </div>}
+              {open && (
+                <div className="absolute top-[50px] right-0 p-5 bg-[#1a2e2e] rounded-[10px] z-[999] border-[0.5px] border-solid border-lightgray flex flex-col gap-[10px] w-[200px] font-light text-aliceblue text-lg">
+                  {currentUser.isSeller && (
+                    <>
+                      <Link className="no-underline text-inherit" to="/mygigs">
+                        Gigs
+                      </Link>
+                      <Link className="no-underline text-inherit" to="/add">
+                        Add New Gig
+                      </Link>
+                    </>
+                  )}
+                  <Link className="no-underline text-inherit" to="/orders">
+                    Orders
+                  </Link>
+                  <Link className="no-underline text-inherit" to="/messages">
+                    Messages
+                  </Link>
+                  <Link className="no-underline text-inherit" to="/">
+                    Logo
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <>
-              <span>Sign in</span>
-              <Link className="link" to="/register">
-                <button>Join</button>
+              <span className="text-xl">Sign in</span>
+              <Link className="no-underline text-inherit" to="/register">
+                <button className="text-white py-[10px] px-5 rounded-md border border-solid border-white cursor-pointer bg-transparent hover:bg-[#444d4d] hover:border-[#5d8080] text-xl">
+                  Join
+                </button>
               </Link>
             </>
           )}
         </div>
       </div>
 
-      {(active || pathname !=="/") && (
+  
+      {(active || pathname !== "/") && (
         <>
-          <hr />
-          <div className="menu">
+          <hr className="w-full border-t-[0.5px] border-solid border-white/25 m-0" />
 
-            <Link className="link menuLink" to="/"> Graphics & Design </Link>
-            <Link className="link menuLink" to="/"> Video & Animation </Link>
-            <Link className="link menuLink" to="/"> Writing & Translation </Link>
-            <Link className="link menuLink" to="/"> AI Services </Link>
-            <Link className="link menuLink" to="/"> Digital Marketing </Link>
-            <Link className="link menuLink" to="/"> Music & Audio </Link>
-            <Link className="link menuLink" to="/"> Programming & Tech </Link>
-            <Link className="link menuLink" to="/"> Business </Link>
-            <Link className="link menuLink" to="/"> Lifestyle </Link>
-
+          <div className="w-full py-[10px] px-0 flex justify-evenly font-light text-gray-500 text-lg font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif]">
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Graphics & Design
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Video & Animation
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Writing & Translation
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              AI Services
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Digital Marketing
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Music & Audio
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Programming & Tech
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Business
+            </Link>
+            <Link
+              className="no-underline text-gray-500 hover:text-white text-lg"
+              to="/"
+            >
+              Lifestyle
+            </Link>
           </div>
-          <hr />
+
+          <hr className="w-full border-t-[0.5px] border-solid border-white/25 m-0" />
         </>
       )}
     </div>

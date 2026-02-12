@@ -1,16 +1,18 @@
-import React from 'react';
-import "./Slide.css";
+import React from "react";
+import "./slide.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
-const Slide=()=>{
-  return(
-    <div className='slide'>
-      <div className="container">
-        
+
+const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+  return (
+    <div className="slide">
+      <div className="slide-container">
+        <Swiper slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
+          {children}
+        </Swiper>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Slide;
