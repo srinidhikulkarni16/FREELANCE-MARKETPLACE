@@ -100,12 +100,13 @@ button:hover{
   border-color:rgb(93, 128, 128);
 }
 
-hr {
-  width: calc(100% - 2px);
-  height: 0;
-  border-top: 0.5px solid #ebe9e9;
-  border-bottom: 0.5px solid #ebe9e9;
+.navbar hr {
+  width: 100%;
+  border: none;
+  border-top: 0.5px solid rgba(255,255,255,0.25);
+  margin: 0;
 }
+
 
 .menu{
   width: 100%;

@@ -11,7 +11,7 @@ import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./App.css";
-
+import CategoryCard from "./components/CategoryCard/CategoryCard";
 
 function App() {
   const Layout = () => {
@@ -21,6 +21,7 @@ function App() {
         <Navbar />
         <Outlet />
         <Footer />
+        <CategoryCard />
       </>
     );
   };

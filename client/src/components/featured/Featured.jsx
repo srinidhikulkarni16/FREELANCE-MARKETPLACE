@@ -6,9 +6,9 @@ function Featured() {
     <div className="featured">
       <div className="container">
         <div className="main">
-          <h1>
+          <h2>
             Find the perfect <span>freelance</span> services for your business
-          </h1>
+          </h2>
           <div className="search">
             <div className="searchInput">
               <input type="text" placeholder='Try Building Something!'/>

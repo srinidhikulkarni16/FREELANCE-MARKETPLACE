@@ -18,8 +18,8 @@
   gap: 30px;
 }
 
-h1 {
-  font-size: 50px;
+h2 {
+  font-size: 35px;
 }
 
 span {
@@ -79,7 +79,6 @@ button {
   color: white;
   border: 1px solid white;
   padding: 5px 10px;
-  border-radius: 20px;
   background-color: transparent;
   font-size: 14px;
 }
