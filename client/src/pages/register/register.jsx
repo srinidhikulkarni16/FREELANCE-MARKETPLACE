@@ -1,10 +1,10 @@
-import React from 'react';
-import "./register.css";
+import React from "react"
+import "./Register.css"
 
-const register=()=>{
-  return(
-    <div className='register'>register</div>
+function Register() {
+  return (
+    <div>Register</div>
   )
 }
 
-export default register;
+export default Register

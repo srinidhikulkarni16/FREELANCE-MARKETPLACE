@@ -18,30 +18,27 @@ function Footer() {
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Business</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Lifestyle</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Photography</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Sitemap</span>
           </div>
+
           <div className="flex flex-col gap-4 min-w-[160px]">
             <h2 className="text-base font-bold text-[#404145]">About</h2>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Press & News</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Partnerships</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Privacy Policy</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Terms of Service</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Intellectual Property Claims</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Investor Relations</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Contact Sales</span>
           </div>
+
           <div className="flex flex-col gap-4 min-w-[160px]">
             <h2 className="text-base font-bold text-[#404145]">Support</h2>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Help & Support</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Trust & Safety</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Selling on Liverr</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Buying on Liverr</span>
+            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Selling on NYX</span>
+            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Buying on NYX</span>
           </div>
           <div className="flex flex-col gap-4 min-w-[160px]">
             <h2 className="text-base font-bold text-[#404145]">Community</h2>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Customer Success Stories</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Community hub</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Forum</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Events</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Blog</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Influencers</span>
@@ -59,28 +56,26 @@ function Footer() {
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">NYX Guides</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Get Inspired</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">NYX Select</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">ClearVoice</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">NYX Workspace</span>
             <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Learn</span>
-            <span className="text-[#74767e] font-normal hover:underline cursor-pointer">Working Not Working</span>
           </div>
         </div>
 
         <hr className="my-8 border-gray-200" />
 
         {/* Bottom Section: Logo and Settings */}
-        <div className="flex flex-wrap items-center justify-between gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-6">
           <div className="flex items-center gap-6">
             <h2 className="text-2xl font-bold text-[#74767e]">NYX</h2>
             <span className="text-sm text-[#b5b6ba] whitespace-nowrap">© NYX International Ltd. 2026</span>
           </div>
-          <div className="flex items-center gap-8">
+          {/* <div className="flex items-center gap-8">
             <div className="flex items-center gap-5">
-              <img src="/img/twitter.png" alt="Twitter" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/img/facebook.png" alt="Facebook" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/img/linkedin.png" alt="LinkedIn" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/img/pinterest.png" alt="Pinterest" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/img/instagram.png" alt="Instagram" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
+              <img src="/assets/twitter.jpg" alt="Twitter" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
+              <img src="/assets/facebook.png" alt="Facebook" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
+              <img src="/assets/linkedin.png" alt="LinkedIn" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
+              <img src="/assets/pinterest.png" alt="Pinterest" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
+              <img src="/assets/instagram.png" alt="Instagram" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
             </div>
             <div className="flex items-center gap-2 text-[#74767e] font-semibold text-sm cursor-pointer">
               <img src="/img/language.png" alt="" className="w-4 h-4" />
@@ -89,7 +84,7 @@ function Footer() {
             <div className="flex items-center gap-2 text-[#74767e] font-semibold text-sm cursor-pointer">
             </div>
             <img src="/img/accessibility.png" alt="" className="w-6 h-6 cursor-pointer opacity-60" />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
