@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply w-[50px] h-[50px] bg-[#f3f3f3] rounded-full flex items-center justify-center text-[#333];
+  }
+
+  .swiper-button-prev {
+    left: -25px;
+  }
+
+  .swiper-button-next {
+    right: -25px;
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    @apply bg-[#ddd];
+  }
+}

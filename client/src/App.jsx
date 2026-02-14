@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Slide from "./components/Slide/slide";
+import Slide from "./components/Slide/Slide";
 import Home from "./pages/home/Home";
 import Gigs from "./pages/Gigs/Gigs";
 import Gig from "./pages/Gig/Gig";

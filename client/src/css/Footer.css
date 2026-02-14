@@ -1,65 +1,65 @@
-.footer {
-display: flex;
-justify-content: center;
-color: #666;
-margin: 50px 0px;
+.foot-footer {
+  display: flex;
+  justify-content: center;
+  color: #666;
+  margin: 50px 0px;
 }    
-img {
+.foot-img {
 width: 24px;
 height: 24px;
 }
 
 .foot-container {
 width: 1400px;}
-.top {
+.foot-top {
 display: flex;
 justify-content: space-between;}
-.item {
+.foot-item {
 display: flex;
 flex-direction: column;
 gap: 20px;}
-h2 {
+.foot-h2 {
 font-size: 16px;
 color: #555;
 }
-span {
+.foot-span {
 font-weight: 300;
 }
 
 
-hr {
+.foot-hr {
 margin: 50px 0px;
 height: 0;
 border: 1px solid #ebe9e9;
 }
-.bottom {
+.foot-bottom {
 display: flex;
 align-items: center;
 justify-content: space-between;
 }
-.left {
+.foot-left {
 width: max-content;
 display: flex;
 align-items: center;
 gap: 20px;
 }
-span {
+.foot-span {
 font-size: 13px;
 white-space: nowrap;
 }
 
-.right {
+.foot-right {
 width: max-content;
 display: flex;
 align-items: center;
 gap: 30px;
 }
-.social {
+.foot-social {
 display: flex;
 gap: 20px;
 }
 
-.link {
+.foot-link {
 display: flex;
 align-items: center;
 gap: 10px;

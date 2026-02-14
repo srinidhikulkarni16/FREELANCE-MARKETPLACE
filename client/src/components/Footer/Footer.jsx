@@ -69,22 +69,6 @@ function Footer() {
             <h2 className="text-2xl font-bold text-[#74767e]">NYX</h2>
             <span className="text-sm text-[#b5b6ba] whitespace-nowrap">© NYX International Ltd. 2026</span>
           </div>
-          {/* <div className="flex items-center gap-8">
-            <div className="flex items-center gap-5">
-              <img src="/assets/twitter.jpg" alt="Twitter" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/assets/facebook.png" alt="Facebook" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/assets/linkedin.png" alt="LinkedIn" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/assets/pinterest.png" alt="Pinterest" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-              <img src="/assets/instagram.png" alt="Instagram" className="w-6 h-6 opacity-60 hover:opacity-100 cursor-pointer" />
-            </div>
-            <div className="flex items-center gap-2 text-[#74767e] font-semibold text-sm cursor-pointer">
-              <img src="/img/language.png" alt="" className="w-4 h-4" />
-              <span>English</span>
-            </div>
-            <div className="flex items-center gap-2 text-[#74767e] font-semibold text-sm cursor-pointer">
-            </div>
-            <img src="/img/accessibility.png" alt="" className="w-6 h-6 cursor-pointer opacity-60" />
-          </div> */}
         </div>
       </div>
     </div>

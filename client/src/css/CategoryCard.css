@@ -7,20 +7,20 @@
   cursor: pointer;
 }
 
-img {
+.cat-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.desc {
+.cat-desc {
   font-weight: 300;
   position: absolute;
   top: 15px;
   left: 15px;
 }
 
-.title {
+.cat-title {
   position: absolute;
   top: 40px;
   left: 15px;

@@ -1,259 +1,180 @@
 import React from "react";
-import "./Gig.css";
-// import { Slider } from "infinite-react-carousel/lib";
 
-function Gig() {
+const Gig = () => {
   return (
-    <div className="gig">
-      <div className="container">
-        <div className="left">
-          <span className="breadcrumbs">NYX  Graphics & Design </span>
-          <h1>I will create ai generated art for you</h1>
-          <div className="user">
+    <div className="flex justify-center">
+      <div className="w-[1400px] py-[30px] flex gap-[50px]">
+
+        {/* LEFT SIDE */}
+        <div className="flex-[2] flex flex-col gap-[20px]">
+
+          <span className="font-light uppercase text-[13px] text-[#555]">
+            Breadcrumbs
+          </span>
+
+          <h1 className="text-2xl font-semibold">
+            Gig Title Here
+          </h1>
+
+          {/* User */}
+          <div className="flex items-center gap-[10px]">
             <img
-              className="pp"
-              src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              src="/img/noavatar.jpg"
               alt=""
+              className="w-[32px] h-[32px] rounded-full object-cover"
             />
-            <span>nyx</span>
-            <div className="stars">
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <span>5</span>
+            <span className="text-[14px] font-medium">Username</span>
+
+            <div className="flex items-center gap-[5px]">
+              <img src="/img/star.png" alt="" className="w-[14px] h-[14px]" />
+              <span className="text-[14px] font-bold text-[#ffc108]">
+                5.0
+              </span>
             </div>
           </div>
-          <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+
+          {/* Slider */}
+          <div className="bg-[#F5F5F5]">
             <img
-              src=""
+              src="/img/sample.jpg"
               alt=""
+              className="max-h-[500px] object-contain w-full"
             />
-            <img
-              src=""
-              alt=""
-            />
-            <img
-              src=""
-              alt=""
-            />
-          </Slider>
-          <h2>About This Gig</h2>
-          <p>
-            I use an AI program to create images based on text prompts. This
-            means I can help you to create a vision you have through a textual
-            description of your scene without requiring any reference images.
-            Some things I've found it often excels at are: Character portraits
-            (E.g. a picture to go with your DnD character) Landscapes (E.g.
-            wallpapers, illustrations to compliment a story) Logos (E.g. Esports
-            team, business, profile picture) You can be as vague or as
-            descriptive as you want. Being more vague will allow the AI to be
-            more creative which can sometimes result in some amazing images. You
-            can also be incredibly precise if you have a clear image of what you
-            want in mind. All of the images I create are original and will be
-            found nowhere else. If you have any questions you're more than
-            welcome to send me a message.
+          </div>
+
+          <h2 className="font-normal text-xl">
+            About This Gig
+          </h2>
+
+          <p className="font-light leading-[25px] text-[#555]">
+            Description goes here...
           </p>
-          <div className="seller">
-            <h2>About The Seller</h2>
-            <div className="user">
+
+          {/* Seller Section */}
+          <div className="mt-[50px] flex flex-col gap-[20px]">
+
+            <h2 className="text-xl font-medium">About The Seller</h2>
+
+            <div className="flex items-center gap-[20px]">
               <img
-                src=""
+                src="/img/noavatar.jpg"
                 alt=""
+                className="w-[100px] h-[100px] rounded-full object-cover"
               />
-              <div className="info">
-                <span>NYX</span>
-                <div className="stars">
-                  <img src="/img/star.png" alt="" />
-                  <img src="/img/star.png" alt="" />
-                  <img src="/img/star.png" alt="" />
-                  <img src="/img/star.png" alt="" />
-                  <img src="/img/star.png" alt="" />
-                  <span>5</span>
+
+              <div className="flex flex-col gap-[10px]">
+                <span className="font-medium">Username</span>
+
+                <div className="flex items-center gap-[5px]">
+                  <img src="/img/star.png" alt="" className="w-[14px] h-[14px]" />
+                  <span className="text-[14px] font-bold text-[#ffc108]">
+                    5.0
+                  </span>
                 </div>
-                <button>Contact Me</button>
+
+                <button className="bg-white rounded-[5px] border border-gray-400 p-[10px]">
+                  Contact Me
+                </button>
               </div>
             </div>
-            <div className="box">
-              <div className="items">
-                <div className="item">
-                  <span className="title">From</span>
-                  <span className="desc">INDIA</span>
-                </div>
-                <div className="item">
-                  <span className="title">Member since</span>
-                  <span className="desc">JAN 2026</span>
-                </div>
-                <div className="item">
-                  <span className="title">Avg. response time</span>
-                  <span className="desc">4 hours</span>
-                </div>
-                <div className="item">
-                  <span className="title">Last delivery</span>
-                  <span className="desc">1 day</span>
-                </div>
-                <div className="item">
-                  <span className="title">Languages</span>
-                  <span className="desc">English</span>
+
+            <div className="border border-lightgray border-gray-300 rounded-[5px] p-[20px] mt-[20px]">
+              <div className="flex justify-between flex-wrap">
+                <div className="w-[300px] flex flex-col gap-[10px] mb-[20px]">
+                  <span className="font-light">From</span>
+                  <span>India</span>
                 </div>
               </div>
-              <hr />
-              <p>
-                My name is NYX, I enjoy creating AI generated art in my spare
-                time. I have a lot of experience using the AI program and that
-                means I know what to prompt the AI with to get a great and
-                incredibly detailed result.
+
+              <hr className="border-gray-300 mb-[20px]" />
+
+              <p className="text-[#555] font-light">
+                Seller bio goes here...
               </p>
             </div>
           </div>
-          <div className="reviews">
-            <h2>Reviews</h2>
-            <div className="item">
-              <div className="user">
+
+          {/* Reviews */}
+          <div className="mt-[50px]">
+            <h2 className="text-xl font-medium">Reviews</h2>
+
+            <div className="flex flex-col gap-[20px] my-[20px]">
+              <div className="flex items-center gap-[10px]">
                 <img
-                  className="pp"
-                  src=""
+                  src="/img/noavatar.jpg"
                   alt=""
+                  className="w-[50px] h-[50px] rounded-full"
                 />
-                <div className="info">
-                  <span>nYX2</span>
-                  <div className="country">
-                    <img
-                      src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png"
-                      alt=""
-                    />
-                    <span>INDIA</span>
+                <div>
+                  <span className="font-medium">Reviewer</span>
+                  <div className="flex items-center gap-[10px] text-gray-500">
+                    <img src="/img/flag.png" alt="" className="w-[20px]" />
+                    <span>Country</span>
                   </div>
                 </div>
               </div>
-              <div className="stars">
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <span>5</span>
+
+              <div className="flex gap-[5px]">
+                <img src="/img/star.png" alt="" className="w-[14px] h-[14px]" />
+                <span className="text-[14px] font-bold text-[#ffc108]">
+                  5
+                </span>
               </div>
-              <p>
-                I just want to say that art_with_ai was the first, and after
-                this, the only artist Ill be using on NYX. Communication was
-                amazing, each and every day he sent me images that I was free to
-                request changes to. They listened, understood, and delivered
-                above and beyond my expectations. I absolutely recommend this
-                gig, and know already that Ill be using it again very very soon
+
+              <p className="text-[#555] font-light">
+                Review comment...
               </p>
-              <div className="helpful">
+
+              <div className="flex items-center gap-[10px]">
                 <span>Helpful?</span>
-                <img src="/img/like.png" alt="" />
+                <img src="/img/like.png" alt="" className="w-[14px]" />
                 <span>Yes</span>
-                <img src="/img/dislike.png" alt="" />
-                <span>No</span>
               </div>
             </div>
-            <hr />
-            <div className="item">
-              <div className="user">
-                <img
-                  className="pp"
-                  src=""
-                  alt=""
-                />
-                <div className="info">
-                  <span>NYX3</span>
-                  <div className="country">
-                    <img
-                      src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e9-1f1ea.png"
-                      alt=""
-                    />
-                    <span>Germany</span>
-                  </div>
-                </div>
-              </div>
-              <div className="stars">
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <img src="/img/star.png" alt="" />
-                <span>5</span>
-              </div>
-              <p>
-                The designer took my photo for my book cover to the next level!
-                Professionalism and ease of working with designer along with
-                punctuality is above industry standards!! Whatever your project
-                is, you need this designer!
-              </p>
-              <div className="helpful">
-                <span>Helpful?</span>
-                <img src="/img/like.png" alt="" />
-                <span>Yes</span>
-                <img src="/img/dislike.png" alt="" />
-                <span>No</span>
-              </div>
-            </div>
-            <hr />
-            <div className="item">
-              <div className="user">
-                <img
-                  className="pp"
-                  src=""
-                  alt=""
-                />
-              
-              </div>
-              <div className="helpful">
-                <span>Helpful?</span>
-                <img src="/img/like.png" alt="" />
-                <span>Yes</span>
-                <img src="/img/dislike.png" alt="" />
-                <span>No</span>
-              </div>
-            </div>
+
+            <hr className="border-gray-300 my-[50px]" />
           </div>
         </div>
-        <div className="right">
-          <div className="price">
-            <h3>1 AI generated image</h3>
-            <h2>$ 59.99</h2>
+
+        {/* RIGHT SIDE */}
+        <div className="flex-1 border border-gray-300 p-[20px] rounded-[5px] flex flex-col gap-[20px] h-max max-h-[500px] sticky top-[150px]">
+
+          <div className="flex items-center justify-between">
+            <h2 className="font-light">Basic Package</h2>
+            <h3 className="font-medium">$100</h3>
           </div>
-          <p>
-            I will create a unique high quality AI generated image based on a
-            description that you give me
+
+          <p className="text-gray-500 my-[10px]">
+            Short package description...
           </p>
-          <div className="details">
-            <div className="item">
-              <img src="/img/clock.png" alt="" />
-              <span>2 Days Delivery</span>
+
+          <div className="flex items-center justify-between text-[14px]">
+            <div className="flex items-center gap-[10px]">
+              <img src="/img/clock.png" alt="" className="w-[20px]" />
+              <span>3 Days Delivery</span>
             </div>
-            <div className="item">
-              <img src="/img/recycle.png" alt="" />
-              <span>3 Revisions</span>
-            </div>
-          </div>
-          <div className="features">
-            <div className="item">
-              <img src="/img/greencheck.png" alt="" />
-              <span>Prompt writing</span>
-            </div>
-            <div className="item">
-              <img src="/img/greencheck.png" alt="" />
-              <span>Artwork delivery</span>
-            </div>
-            <div className="item">
-              <img src="/img/greencheck.png" alt="" />
-              <span>Image upscaling</span>
-            </div>
-            <div className="item">
-              <img src="/img/greencheck.png" alt="" />
-              <span>Additional design</span>
+
+            <div className="flex items-center gap-[10px]">
+              <img src="/img/recycle.png" alt="" className="w-[20px]" />
+              <span>2 Revisions</span>
             </div>
           </div>
-          <button>Continue</button>
+
+          <div>
+            <div className="flex items-center gap-[10px] font-light text-gray-500 mb-[5px]">
+              <img src="/img/check.png" alt="" className="w-[14px]" />
+              Feature 1
+            </div>
+          </div>
+
+          <button className="bg-[#1dbf73] p-[10px] text-white font-medium text-[18px] cursor-pointer">
+            Continue
+          </button>
         </div>
+
       </div>
     </div>
   );
-}
+};
 
 export default Gig;

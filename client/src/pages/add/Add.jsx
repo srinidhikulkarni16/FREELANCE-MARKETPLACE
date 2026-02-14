@@ -1,49 +1,126 @@
 import React from "react";
-import "./Add.css";
 
 const Add = () => {
   return (
-    <div className="add">
-      <div className="add-container">
-        <h1>Add New Gig</h1>
-        <div className="sections">
-          <div className="info">
-            <label htmlFor="">Title</label>
+    <div className="flex justify-center">
+      <div className="w-[1400px] py-[50px]">
+        <h1 className="w-max mb-[30px] text-gray-500 font-light text-2xl">
+          Add New Gig
+        </h1>
+
+        <div className="flex justify-between gap-[100px]">
+          
+          {/* Left Section */}
+          <div className="flex-1 flex flex-col gap-[10px] justify-between">
+            <label className="text-gray-500 text-[18px]">Title</label>
             <input
               type="text"
               placeholder="e.g. I will do something I'm really good at"
+              className="p-[20px] border border-gray-300 rounded-md"
             />
-            <label htmlFor="">Category</label>
-            <select name="cats" id="cats">
+
+            <label className="text-gray-500 text-[18px]">Category</label>
+            <select
+              name="cats"
+              id="cats"
+              className="p-[20px] border border-gray-300 rounded-md"
+            >
               <option value="design">Design</option>
               <option value="web">Web Development</option>
               <option value="animation">Animation</option>
               <option value="music">Music</option>
             </select>
-            <label htmlFor="">Cover Image</label>
-            <input type="file" />
-            <label htmlFor="">Upload Images</label>
-            <input type="file" multiple />
-            <label htmlFor="">Description</label>
-            <textarea name="" id="" placeholder="Brief descriptions to introduce your service to customers" cols="0" rows="16"></textarea>
-            <button>Create</button>
+
+            <label className="text-gray-500 text-[18px]">Cover Image</label>
+            <input
+              type="file"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">Upload Images</label>
+            <input
+              type="file"
+              multiple
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">Description</label>
+            <textarea
+              placeholder="Brief descriptions to introduce your service to customers"
+              rows="16"
+              className="p-[20px] border border-gray-300 rounded-md"
+            ></textarea>
+
+            <button className="border-none p-[20px] text-white font-medium text-[18px] bg-[#1dbf73] cursor-pointer rounded-md">
+              Create
+            </button>
           </div>
-          <div className="details">
-            <label htmlFor="">Service Title</label>
-            <input type="text" placeholder="e.g. One-page web design" />
-            <label htmlFor="">Short Description</label>
-            <textarea name="" id="" placeholder="Short description of your service" cols="30" rows="10"></textarea>
-            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" />
-            <label htmlFor="">Revision Number</label>
-            <input type="number" />
-            <label htmlFor="">Add Features</label>
-            <input type="text" placeholder="e.g. page design" />
-            <input type="text" placeholder="e.g. file uploading" />
-            <input type="text" placeholder="e.g. setting up a domain" />
-            <input type="text" placeholder="e.g. hosting" />
-            <label htmlFor="">Price</label>
-            <input type="number" />
+
+          {/* Right Section */}
+          <div className="flex-1 flex flex-col gap-[10px] justify-between">
+            <label className="text-gray-500 text-[18px]">
+              Service Title
+            </label>
+            <input
+              type="text"
+              placeholder="e.g. One-page web design"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">
+              Short Description
+            </label>
+            <textarea
+              placeholder="Short description of your service"
+              rows="10"
+              className="p-[20px] border border-gray-300 rounded-md"
+            ></textarea>
+
+            <label className="text-gray-500 text-[18px]">
+              Delivery Time (e.g. 3 days)
+            </label>
+            <input
+              type="number"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">
+              Revision Number
+            </label>
+            <input
+              type="number"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">
+              Add Features
+            </label>
+            <input
+              type="text"
+              placeholder="e.g. page design"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              placeholder="e.g. file uploading"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              placeholder="e.g. setting up a domain"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+            <input
+              type="text"
+              placeholder="e.g. hosting"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
+
+            <label className="text-gray-500 text-[18px]">Price</label>
+            <input
+              type="number"
+              className="p-[20px] border border-gray-300 rounded-md"
+            />
           </div>
         </div>
       </div>
