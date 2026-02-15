@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 function CategoryCard({ card }) {
   return (
-    <Link to="/gigs?cat=design">
+    <Link to={`/gigs?cat=${card.cat}`}>
+
       <div className="w-[252px] h-[344px] text-white rounded-md relative cursor-pointer overflow-hidden px-2">
         <img
           className="w-full h-full object-cover"

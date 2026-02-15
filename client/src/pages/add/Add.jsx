@@ -51,7 +51,7 @@ const Add = () => {
               className="p-[20px] border border-gray-300 rounded-md"
             ></textarea>
 
-            <button className="border-none p-[20px] text-white font-medium text-[18px] bg-[#1dbf73] cursor-pointer rounded-md">
+            <button className="border-none p-[20px] text-white font-medium text-[18px] bg-[#0a1b1b] hover:bg-[#1a2e2e] cursor-pointer rounded-md">
               Create
             </button>
           </div>

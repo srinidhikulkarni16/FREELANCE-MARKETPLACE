@@ -21,152 +21,52 @@ const Orders = () => {
         <table className="w-full border-collapse">
           <thead>
             <tr className="h-[50px]">
-              <th className="text-left">Image</th>
               <th className="text-left">Title</th>
               <th className="text-left">Price</th>
               <th className="text-left">
                 {currentUser.isSeller ? "Buyer" : "Seller"}
               </th>
-              <th className="text-left">Contact</th>
             </tr>
           </thead>
 
           <tbody>
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>Stunning concept art</td>
-              <td>
-                59.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>Futuristic concept illustration</td>
+              <td>4,939</td>
+              <td>Rohan Mehta</td>
             </tr>
 
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>Ai generated concept art</td>
-              <td>
-                79.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>AI-powered sci-fi artwork</td>
+              <td>6,557</td>
+              <td>Emily Carter</td>
             </tr>
 
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>High quality digital character</td>
-              <td>
-                110.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>Premium digital character design</td>
+              <td>9,129</td>
+              <td>Arjun Kapoor</td>
             </tr>
 
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>Illustration hyper realistic painting</td>
-              <td>
-                39.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>Hyper-realistic fantasy painting</td>
+              <td>3,247</td>
+              <td>Sophia Williams</td>
             </tr>
 
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>Original ai generated digital art</td>
-              <td>
-                119.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>Original AI-crafted digital masterpiece</td>
+              <td>9,877</td>
+              <td>Daniel Rodriguez</td>
             </tr>
 
             <tr className="h-[50px] even:bg-[#1dbf730f]">
-              <td>
-                <img
-                  className="w-[50px] h-[25px] object-cover"
-                  src=""
-                  alt=""
-                />
-              </td>
-              <td>Text based ai generated art</td>
-              <td>
-                49.<sup className="text-[12px]">99</sup>
-              </td>
-              <td>NYX</td>
-              <td>
-                <img
-                  className="w-[25px] cursor-pointer"
-                  src="./img/message.png"
-                  alt=""
-                />
-              </td>
+              <td>Text-driven AI art creation</td>
+              <td>4,067</td>
+              <td>Ishita Sharma</td>
             </tr>
-
           </tbody>
         </table>
-
       </div>
     </div>
   );
