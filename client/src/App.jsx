@@ -15,7 +15,7 @@ import Messages from "./pages/Messages/Messages";
 import Message from "./pages/Message/Message";
 import MyGigs from "./pages/MyGigs/MyGigs";
 import Pay from "./pages/Pay/Pay";
-import Success from "./pages/Success/Success"; // 1. Import the Success page
+import Success from "./pages/Success/Success";
 
 function App() {
   const Layout = () => {
