@@ -5,7 +5,7 @@ import newRequest from "../../Services/NewReq";
 import { useQuery } from "@tanstack/react-query";
 
 function Gigs() {
-  const { search } = useLocation(); // e.g., ?cat=ai-art
+  const { search } = useLocation(); 
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
   const [min, setMin] = useState("");

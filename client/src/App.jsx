@@ -14,6 +14,8 @@ import Orders from "./pages/Orders/Orders";
 import Messages from "./pages/Messages/Messages";
 import Message from "./pages/Message/Message";
 import MyGigs from "./pages/MyGigs/MyGigs";
+import Pay from "./pages/Pay/Pay";
+import Success from "./pages/Success/Success"; // 1. Import the Success page
 
 function App() {
   const Layout = () => {
@@ -63,6 +65,14 @@ function App() {
         {
           path: "/gig/:id",
           element: <Gig />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success", // 2. Add the success route
+          element: <Success />,
         },
       ],
     },

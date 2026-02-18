@@ -49,8 +49,6 @@ const CheckoutForm = () => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -59,15 +57,11 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-      return_url: `${window.location.origin}/success`,
-    },
+        // This should point to your success page where you call the /confirm endpoint
+        return_url: `${window.location.origin}/success`,
+      },
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your return_url. For some payment methods, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the return_url.
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
@@ -82,19 +76,42 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form id="payment-form" onSubmit={handleSubmit} className="space-y-6">
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      
+      <div className="py-2">
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+      </div>
+
+      <button 
+        disabled={isLoading || !stripe || !elements} 
+        id="submit"
+        className="w-full bg-[#0a1b1b] text-white py-4 rounded-2xl font-bold text-lg hover:bg-[#1a2e2e] transition-all active:scale-[0.98] shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? (
+            <div className="flex justify-center items-center gap-2">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Processing...</span>
+            </div>
+          ) : (
+            "Pay now"
+          )}
         </span>
       </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
+
+      {/* Error or success messages */}
+      {message && (
+        <div 
+          id="payment-message" 
+          className="text-center text-sm font-semibold p-3 rounded-xl bg-red-50 text-red-600 border border-red-100"
+        >
+          {message}
+        </div>
+      )}
     </form>
   );
 };
