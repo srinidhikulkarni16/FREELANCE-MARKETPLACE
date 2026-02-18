@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const GigCard = ({ item }) => {
   return (
-    <Link to={`/gig/${item.id}`} className="link group"> {/* Added 'group' here */}
+    <Link to={`/gig/${item._id}`}
+      className="link group"> 
       <div className="w-[324px] min-h-[420px] border border-[#e4e4e4] mb-[40px] flex flex-col justify-between">
         
         <div>

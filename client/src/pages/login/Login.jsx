@@ -15,9 +15,10 @@ function Login() {
     try {
       const res = await newRequest.post("/auth/login", { username, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      setError(err.response.data);
+      // MODIFIED: Ensure we get the message string from the backend error
+      setError(err.response?.data?.message || "Something went wrong!");
     }
   };
 
@@ -40,7 +41,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-        {error && error}
+        {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
       </form>
     </div>
   );

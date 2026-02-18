@@ -87,7 +87,6 @@ function MyGigs() {
               </td>
               <td>16</td>
             </tr>
-
           </tbody>
         </table>
 

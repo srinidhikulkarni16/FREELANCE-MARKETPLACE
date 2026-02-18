@@ -2,7 +2,7 @@ import React from "react";
 import Featured from "../../components/Featured/Featured";
 import Slide from "../../components/Slide/Slide";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import ProjectCard from "../../components/ProjectCard/ProjectCard";
+// import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { cards, projects } from "../../data";
 
 import graphics from "../../img/graphics.svg";
