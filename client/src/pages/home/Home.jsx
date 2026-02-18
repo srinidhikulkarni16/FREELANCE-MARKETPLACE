@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Added for navigation
 import Featured from "../../components/Featured/Featured";
 import Slide from "../../components/Slide/Slide";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
-// import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import { cards, projects } from "../../data";
+import { cards } from "../../data";
 
 import graphics from "../../img/graphics.svg";
 import digitalMarketing from "../../img/online-marketing.svg";
@@ -17,23 +17,22 @@ import data from "../../img/data.svg";
 import photography from "../../img/photography.svg";
 
 function Home() {
-
+  // Added 'cat' slugs to match your Gigs page filtering logic
   const marketplaceItems = [
-    { img: graphics, title: "Graphics & Design" },
-    { img: digitalMarketing, title: "Digital Marketing" },
-    { img: writingTranslation, title: "Writing & Translation" },
-    { img: videoAnimation, title: "Video & Animation" },
-    { img: musicAudio, title: "Music & Audio" },
-    { img: programmingTech, title: "Programming & Tech" },
-    { img: business, title: "Business" },
-    { img: lifestyle, title: "Lifestyle" },
-    { img: data, title: "Data" },
-    { img: photography, title: "Photography" },
+    { img: graphics, title: "Graphics & Design", cat: "design" },
+    { img: digitalMarketing, title: "Digital Marketing", cat: "marketing" },
+    { img: writingTranslation, title: "Writing & Translation", cat: "writing" },
+    { img: videoAnimation, title: "Video & Animation", cat: "video" },
+    { img: musicAudio, title: "Music & Audio", cat: "audio" },
+    { img: programmingTech, title: "Programming & Tech", cat: "tech" },
+    { img: business, title: "Business", cat: "business" },
+    { img: lifestyle, title: "Lifestyle", cat: "lifestyle" },
+    { img: data, title: "Data", cat: "data" },
+    { img: photography, title: "Photography", cat: "photography" },
   ];
 
   return (
     <div className="w-full overflow-hidden bg-white">
-
       {/* Hero */}
       <Featured />
 
@@ -57,20 +56,23 @@ function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-14 gap-x-6">
             {marketplaceItems.map((item, index) => (
-              <div
+              /* Wrap in Link so clicking actually searches that category */
+              <Link
+                to={`/gigs?cat=${item.cat}`}
                 key={index}
-                className="group flex flex-col items-center gap-4 text-center cursor-pointer transition-transform hover:-translate-y-1"
+                className="group flex flex-col items-center gap-4 text-center cursor-pointer transition-transform hover:-translate-y-1 no-underline"
               >
                 <img
                   src={item.img}
                   alt={item.title}
                   className="w-14 h-14"
                 />
+                {/* Kept your original color: #1a2e2e */}
                 <div className="w-10 h-[2px] bg-gray-300 group-hover:bg-[#1a2e2e] group-hover:w-14 transition-all duration-300"></div>
                 <span className="text-sm text-gray-700 font-medium">
                   {item.title}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -79,7 +81,6 @@ function Home() {
       {/* NYX Business */}
       <section className="py-24 bg-[#0a1b1b]">
         <div className="max-w-[1400px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-
           <div className="flex-1 text-white space-y-6">
             <h3 className="text-2xl font-semibold uppercase tracking-wide">
               NYX Business
@@ -107,7 +108,8 @@ function Home() {
               ))}
             </ul>
 
-            <button className="mt-6 bg-[#555555] hover:bg-[#444d4d] transition px-6 py-3 rounded-md font-medium">
+            {/* Kept your original button color: #555555 */}
+            <button className="mt-6 bg-[#555555] hover:bg-[#444d4d] transition px-6 py-3 rounded-md font-medium text-white">
               Explore NYX Business
             </button>
           </div>

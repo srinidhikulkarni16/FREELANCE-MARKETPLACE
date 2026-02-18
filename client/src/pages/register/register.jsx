@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import upload from "../../Services/Upload";
-import "./Register.css";
 import newRequest from "../../Services/NewReq";
 import { useNavigate } from "react-router-dom";
 
@@ -19,85 +18,125 @@ function Register() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setUser((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSeller = (e) => {
-    setUser((prev) => {
-      return { ...prev, isSeller: e.target.checked };
-    });
+    setUser((prev) => ({ ...prev, isSeller: e.target.checked }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const url = await upload(file);
     try {
       await newRequest.post("/auth/register", {
         ...user,
         img: url,
       });
-      navigate("/")
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
+
+  // Shared input styles for cleaner code
+  const inputStyles = "p-3 border border-gray-300 rounded focus:ring-2 focus:ring-[#0a1b1b] outline-none transition-all";
+  const labelStyles = "text-gray-600 font-medium mt-2";
+
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit}>
-        <div className="left">
-          <h1>Create a new account</h1>
-          <label htmlFor="">Username</label>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+      <form 
+        onSubmit={handleSubmit} 
+        className="w-full max-w-5xl bg-white p-8 md:p-12 rounded-xl shadow-lg flex flex-col md:flex-row gap-12"
+      >
+        {/* Left Section */}
+        <div className="flex-1 flex flex-col gap-4">
+          <h1 className="text-2xl font-bold text-gray-500 mb-2">Create a new account</h1>
+          
+          <label className={labelStyles}>Username</label>
           <input
             name="username"
             type="text"
-            placeholder="johndoe"
+            placeholder="Nidhi"
+            className={inputStyles}
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Email</label>
+
+          <label className={labelStyles}>Email</label>
           <input
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="email@example.com"
+            className={inputStyles}
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
-          <label htmlFor="">Profile Picture</label>
-          <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-          <label htmlFor="">Country</label>
+
+          <label className={labelStyles}>Password</label>
+          <input 
+            name="password" 
+            type="password" 
+            className={inputStyles} 
+            onChange={handleChange} 
+            required
+          />
+
+          <label className={labelStyles}>Profile Picture</label>
+          <input 
+            type="file" 
+            className="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 cursor-pointer"
+            onChange={(e) => setFile(e.target.files[0])} 
+          />
+
+          <label className={labelStyles}>Country</label>
           <input
             name="country"
             type="text"
-            placeholder="Usa"
+            placeholder="India"
+            className={inputStyles}
             onChange={handleChange}
           />
-          <button type="submit">Register</button>
+          
+          <button 
+            type="submit" 
+            className="mt-6 p-4 bg-[#0a1b1b] hover:bg-[#1a2e2e] text-white font-bold rounded transition-colors shadow-md"
+          >
+            Register
+          </button>
         </div>
-        <div className="right">
-          <h1>I want to become a seller</h1>
-          <div className="toggle">
-            <label htmlFor="">Activate the seller account</label>
-            <label className="switch">
-              <input type="checkbox" onChange={handleSeller} />
-              <span className="slider round"></span>
+
+        {/* Right Section */}
+        <div className="flex-1 flex flex-col gap-4">
+          <h1 className="text-2xl font-bold text-gray-500 mb-2">I want to become a seller</h1>
+          
+          <div className="flex items-center gap-4 py-2">
+            <span className="text-gray-600 font-medium">Activate the seller account</span>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input 
+                type="checkbox" 
+                className="sr-only peer" 
+                onChange={handleSeller} 
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
-          <label htmlFor="">Phone Number</label>
+
+          <label className={labelStyles}>Phone Number</label>
           <input
             name="phone"
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="xx xxxxx-xxxxx"
+            className={inputStyles}
             onChange={handleChange}
           />
-          <label htmlFor="">Description</label>
+
+          <label className={labelStyles}>Description</label>
           <textarea
             placeholder="A short description of yourself"
             name="desc"
-            id=""
-            cols="30"
-            rows="10"
+            rows="8"
+            className={`${inputStyles} resize-none`}
             onChange={handleChange}
           ></textarea>
         </div>

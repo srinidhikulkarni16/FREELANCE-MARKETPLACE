@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import GigCard from "../../components/GigCard/GigCard";
 import newRequest from "../../Services/NewReq";
@@ -8,28 +8,37 @@ function Gigs() {
   const { search } = useLocation(); // e.g., ?cat=ai-art
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
 
-  const minRef = useRef();
-  const maxRef = useRef();
+  // Build query parameters safely
+  const fetchGigs = async () => {
+    const params = new URLSearchParams();
 
-  // Query key now includes filters to refetch automatically when they change
+    // Category from URL
+    const cat = new URLSearchParams(search).get("cat");
+    const searchParam = new URLSearchParams(search).get("search"); // ADD THIS
+
+    if (cat) params.append("cat", cat);
+    if (searchParam) params.append("search", searchParam); // ADD THIS
+
+    // Min/Max filters
+    if (min) params.append("min", min);
+    if (max) params.append("max", max);
+
+    // Sort
+    params.append("sort", sort);
+
+    const url = `/gigs?${params.toString()}`;
+    console.log("Fetching:", url); 
+    const res = await newRequest.get(url);
+    return res.data;
+  };
+
   const { isLoading, error, data, refetch } = useQuery({
-    queryKey: [
-      "gigs",
-      search,
-      sort,
-      minRef.current?.value || "",
-      maxRef.current?.value || "",
-    ],
-    queryFn: () =>
-      newRequest
-        .get(
-          `/gigs${
-            search || "?"
-          }&min=${minRef.current?.value || ""}&max=${maxRef.current?.value || ""}&sort=${sort}`
-        )
-        .then((res) => res.data),
-    keepPreviousData: true, // keeps previous data while fetching new
+    queryKey: ["gigs", search, sort, min, max],
+    queryFn: fetchGigs,
+    keepPreviousData: true,
   });
 
   const reSort = (type) => {
@@ -37,17 +46,17 @@ function Gigs() {
     setOpen(false);
   };
 
-  const apply = () => {
-    refetch(); // triggers fetch with new min/max
+  const applyFilters = () => {
+    refetch(); // triggers fetch with updated min/max
   };
 
-  const category = new URLSearchParams(search).get("cat") || "All Gigs";
+  const categoryName = new URLSearchParams(search).get("cat") || "All Gigs";
 
   return (
     <div className="w-full flex justify-center">
       <div className="w-[1400px] py-[30px] flex flex-col gap-[15px]">
         <span className="font-light uppercase text-[20px] text-[#555]">NYX</span>
-        <h1 className="text-2xl font-semibold">{category}</h1>
+        <h1 className="text-2xl font-semibold">{categoryName}</h1>
         <p className="text-[#999] text-xl font-light">
           Explore the boundaries of art and technology with NYX's freelancers
         </p>
@@ -57,19 +66,21 @@ function Gigs() {
           <div className="flex items-center gap-[10px] text-[#555] font-light text-xl">
             <span>Budget</span>
             <input
-              ref={minRef}
               type="number"
               placeholder="min"
+              value={min}
+              onChange={(e) => setMin(e.target.value)}
               className="p-[5px] border border-gray-300 rounded-[5px] outline-none"
             />
             <input
-              ref={maxRef}
               type="number"
               placeholder="max"
+              value={max}
+              onChange={(e) => setMax(e.target.value)}
               className="p-[5px] border border-gray-300 rounded-[5px] outline-none"
             />
             <button
-              onClick={apply}
+              onClick={applyFilters}
               className="px-[10px] py-[5px] bg-[#1a2e2e] text-white font-medium rounded-[5px]"
             >
               Apply

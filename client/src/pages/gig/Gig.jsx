@@ -9,14 +9,49 @@ const Gig = () => {
   // Fetch gig dynamically from backend
   const { data, isLoading, error } = useQuery({
     queryKey: ["gig", id],
-    queryFn: () => newRequest.get(`/gigs/${id}`).then((res) => res.data),
+    queryFn: () => newRequest.get(`/gigs/single/${id}`).then((res) => res.data),
   });
 
-  if (isLoading) return <div className="p-10 text-center">Loading...</div>;
-  if (error) return <div className="p-10 text-center">Something went wrong!</div>;
-  if (!data) return <div className="p-10 text-center">Gig not found.</div>;
+  // --- UPDATED LOADING AND ERROR STATES ---
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-40">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#0a1b1b]"></div>
+      </div>
+    );
+  }
 
-  // Everything else remains exactly your original JSX
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <div className="bg-red-50 border border-red-200 text-red-600 px-6 py-4 rounded-lg shadow-sm flex flex-col items-center gap-2 max-w-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h2 className="font-bold text-lg">Oops! Something went wrong</h2>
+          <p className="text-sm opacity-90">
+            {error.response?.data || "We couldn't load the gig details. Please verify the link or try again later."}
+          </p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-2 text-xs font-semibold underline hover:text-red-800"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <h2 className="text-xl font-semibold text-gray-600">Gig not found.</h2>
+      </div>
+    );
+  }
+
+  // --- EVERYTHING ELSE REMAINS EXACTLY THE SAME ---
   return (
     <div className="flex justify-center bg-[#f9fafb] py-10">
       <div className="w-[1400px] flex gap-12">
@@ -32,17 +67,11 @@ const Gig = () => {
 
           {/* User Section */}
           <div className="flex items-center gap-3">
-            {/* <img
-              src={data.pp || "/img/noavatar.jpg"}
-              alt=""
-              className="w-9 h-9 rounded-full object-cover"
-            /> */}
             <span className="text-sm font-medium text-gray-700">
               {data.username}
             </span>
 
             <div className="flex items-center gap-1">
-              {/* <img src="/img/star.png" alt="" className="w-4 h-4" /> */}
               <span className="text-sm font-semibold text-gray-700">
                 {data.star} ({data.reviewCount})
               </span>

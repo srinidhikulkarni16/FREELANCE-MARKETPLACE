@@ -37,7 +37,8 @@ export const login = async (req, res, next) => {
   console.log("Incoming body:", req.body);
 
   try {
-    const user = await User.findOne({ username: req.body.username });
+    // Use email instead of username
+    const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
       console.log("User not found");
@@ -48,7 +49,7 @@ export const login = async (req, res, next) => {
 
     if (!isCorrect) {
       console.log("Wrong password");
-      return next(createError(400, "Wrong password or username!"));
+      return next(createError(400, "Wrong password or email!"));
     }
 
     const token = jwt.sign(
@@ -74,6 +75,7 @@ export const login = async (req, res, next) => {
     next(err);
   }
 };
+
 
 // ================= LOGOUT =================
 export const logout = async (req, res) => {

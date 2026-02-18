@@ -54,17 +54,21 @@ const GigCard = ({ item }) => {
         <div>
           <hr className="border-[0.5px] border-[#e4e4e4]" />
 
-          {/* Detail */}
-          <div className="px-[20px] py-[10px] flex items-center justify-between">
-            <div className="flex flex-col">
-              <span className="text-[#999] text-[10px] font-bold uppercase tracking-wider">
-                STARTING AT
-              </span>
-              <h2 className="text-[#555] text-[18px] font-normal">
-                ₹ {item.price}
-              </h2>
-            </div>
-          </div>
+          {/* Detail Section */}
+<div className="px-[20px] py-[10px] flex items-center justify-between">
+  <div className="flex flex-col">
+    <span className="text-[#999] text-[10px] font-bold uppercase tracking-wider">
+      STARTING AT
+    </span>
+    <h2 className="text-[#555] text-[20px] font-semibold">
+      ₹{item.price.toLocaleString('en-IN')}
+    </h2>
+  </div>
+  {/* Optional Heart Icon */}
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+  </svg>
+</div>
         </div>
 
       </div>

@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function MyGigs() {
-  const currentUser = {
-    id: 1,
-    username: "NYX",
-    isSeller: true,
-  };
+  const currentUser = getCurrentUser();
 
   return (
     <div className="flex justify-center text-[#555]">
