@@ -1,56 +1,36 @@
 import User from "../models/user.model.js";
-import createError from "../services/createError.js";
+import createError from "../utils/createError.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-// ================= REGISTER =================
 export const register = async (req, res, next) => {
-  console.log("=== REGISTER ROUTE HIT ===");
-  console.log("Incoming body:", req.body);
-
   try {
-    if (!req.body.password) {
-      return next(createError(400, "Password is required"));
-    }
-
+    // Hash the password
     const hash = bcrypt.hashSync(req.body.password, 5);
 
+    // Create new user with profile image support
     const newUser = new User({
       ...req.body,
       password: hash,
+      img: req.body.img || "", // ✅ Use provided img or default empty string
     });
 
     await newUser.save();
-
-    console.log("User saved successfully");
-
     res.status(201).send("User has been created.");
   } catch (err) {
-    console.log("REGISTER ERROR:", err);
     next(err);
   }
 };
 
-// ================= LOGIN =================
 export const login = async (req, res, next) => {
-  console.log("=== LOGIN ROUTE HIT ===");
-  console.log("Incoming body:", req.body);
-
   try {
-    // Use email instead of username
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ username: req.body.username });
 
-    if (!user) {
-      console.log("User not found");
-      return next(createError(404, "User not found!"));
-    }
+    if (!user) return next(createError(404, "User not found!"));
 
     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-
-    if (!isCorrect) {
-      console.log("Wrong password");
-      return next(createError(400, "Wrong password or email!"));
-    }
+    if (!isCorrect)
+      return next(createError(400, "Wrong password or username!"));
 
     const token = jwt.sign(
       {
@@ -61,9 +41,6 @@ export const login = async (req, res, next) => {
     );
 
     const { password, ...info } = user._doc;
-
-    console.log("Login successful");
-
     res
       .cookie("accessToken", token, {
         httpOnly: true,
@@ -71,16 +48,11 @@ export const login = async (req, res, next) => {
       .status(200)
       .send(info);
   } catch (err) {
-    console.log("LOGIN ERROR:", err);
     next(err);
   }
 };
 
-
-// ================= LOGOUT =================
 export const logout = async (req, res) => {
-  console.log("=== LOGOUT ROUTE HIT ===");
-
   res
     .clearCookie("accessToken", {
       sameSite: "none",

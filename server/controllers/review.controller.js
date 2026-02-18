@@ -1,4 +1,4 @@
-import createError from "../services/createError.js";
+import createError from "../utils/createError.js";
 import Review from "../models/review.model.js";
 import Gig from "../models/gig.model.js";
 

@@ -1,10 +1,15 @@
 import express from "express";
-import { deleteUser, getUser } from "../controllers/usercontroller.js";
-import { verifyToken } from "../middleware/jwt.js";
+import { deleteUser, getUser, getUsers } from "../controllers/user.controller.js";
 
 const router = express.Router();
 
-router.delete("/:id", verifyToken, deleteUser);
+// GET all users
+router.get("/", getUsers);
+
+// GET single user
 router.get("/:id", getUser);
+
+// DELETE user
+router.delete("/:id", deleteUser);
 
 export default router;
