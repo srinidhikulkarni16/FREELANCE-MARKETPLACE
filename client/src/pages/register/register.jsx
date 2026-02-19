@@ -34,22 +34,18 @@ function Register() {
     setError(null);
 
     try {
-      // 1. Upload image
       const url = file ? await upload(file) : "";
 
-      // 2. Register User
       await newRequest.post("/auth/register", {
         ...user,
         img: url,
       });
 
-      // 3. AUTO-LOGIN (Uses the email and password just entered)
       const res = await newRequest.post("/auth/login", {
         email: user.email,
         password: user.password,
       });
 
-      // 4. Save session and redirect
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       setLoading(false);
       navigate("/user");
@@ -58,8 +54,6 @@ function Register() {
       setLoading(false);
       const rawError = err.response?.data;
       
-      // FRIENDLY ERROR CHECK:
-      // If the error message contains E11000, it's a duplicate username/email
       if (JSON.stringify(rawError).includes("E11000")) {
         setError("That username or email is already taken! Try logging in instead.");
       } else {
@@ -68,7 +62,6 @@ function Register() {
     }
   };
 
-  // Styles
   const inputStyles = "p-3 border border-gray-300 rounded focus:ring-2 focus:ring-[#0a1b1b] outline-none transition-all";
   const labelStyles = "text-gray-600 font-medium mt-2";
 
@@ -107,8 +100,7 @@ function Register() {
           >
             {loading ? "Processing..." : "Register"}
           </button>
-
-          {/* User-friendly Error Display */}
+          
           {error && (
             <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-4">
               <p className="text-red-700 text-sm font-semibold">{typeof error === "string" ? error : "An error occurred"}</p>

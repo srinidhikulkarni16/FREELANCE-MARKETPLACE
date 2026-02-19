@@ -11,7 +11,6 @@ const Review = ({ review }) => {
     staleTime: 600000,
   });
 
-  // Find user image in local data.js
   const findUserImage = (username) => {
     const match = [...staticGigs, ...staticProjects].find(u => u.username === username);
     return match?.pp || user?.img || null;

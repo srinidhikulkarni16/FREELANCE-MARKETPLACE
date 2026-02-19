@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import CheckoutForm from "../../components/CheckOutForm/CheckoutForm";
+import CheckoutForm from "../../components/CheckOutForm/CheckOutForm";
 
 const Pay = () => {
-  // We remove the useEffect calling create-payment-intent to avoid backend errors
-  // while you are in simulation mode.
 
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center items-center py-20">

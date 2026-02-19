@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Featured from "../../components/Featured/Featured";
+import Featured from "../../components/featured/Featured";
 import Slide from "../../components/Slide/Slide";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { cards } from "../../data";
@@ -30,7 +30,6 @@ function Home() {
     { img: photography, title: "Photography", cat: "photography" },
   ];
 
-  // Function to handle smooth scroll to footer
   const handleScrollToFooter = () => {
     const footerElement = document.getElementById("footer");
     if (footerElement) {
@@ -91,8 +90,7 @@ function Home() {
               ))}
             </ul>
 
-            {/* Added onClick here */}
-            <button 
+            <button
               onClick={handleScrollToFooter}
               className="mt-6 bg-[#555555] hover:bg-[#444d4d] transition px-6 py-3 rounded-md font-medium text-white"
             >

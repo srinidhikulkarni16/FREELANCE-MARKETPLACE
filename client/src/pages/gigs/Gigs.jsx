@@ -19,10 +19,8 @@ function Gigs() {
         .then((res) => res.data),
   });
 
-  // Get category from URL to filter local data
   const cat = new URLSearchParams(search).get("cat");
 
-  // If DB returns data, use it. Otherwise, use localGigs filtered by category.
   const displayData = (data && data.length > 0) 
     ? data 
     : localGigs.filter(g => !cat || g.cat === cat);

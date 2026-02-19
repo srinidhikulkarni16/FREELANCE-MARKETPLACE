@@ -5,17 +5,17 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Slide from "./components/Slide/Slide";
 import Home from "./pages/home/Home";
-import Gigs from "./pages/Gigs/Gigs";
-import Gig from "./pages/Gig/Gig";
+import Gigs from "./pages/gigs/Gigs";
+import Gig from "./pages/gig/Gig";
 import Login from "./pages/login/Login";
-import Register from "./pages/Register/Register";
+import Register from "./pages/register/register";
 import User from "./pages/User/user";
 import Add from "./pages/Add/Add";
 import Orders from "./pages/orders/orders";
-import Messages from "./pages/Messages/Messages";
-import Message from "./pages/Message/Message";
-import MyGigs from "./pages/MyGigs/MyGigs";
-import Pay from "./pages/Pay/Pay";
+import Messages from "./pages/messages/Messages";
+import Message from "./pages/message/Message";
+import MyGigs from "./pages/myGigs/myGigs";
+import Pay from "./pages/pay/Pay";
 import Success from "./pages/Success/Success";
 
 function App() {
@@ -77,7 +77,7 @@ function App() {
         },
         {
           path: "/user",
-          element: <User />, // <-- NEW: user dashboard page
+          element: <User />, 
         },
       ],
     },

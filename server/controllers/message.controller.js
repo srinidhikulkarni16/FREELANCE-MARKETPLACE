@@ -9,7 +9,6 @@ export const createMessage = async (req, res, next) => {
   });
   try {
     const savedMessage = await newMessage.save();
-    // This updates the conversation preview in the "Messages" list
     await Conversation.findOneAndUpdate(
       { id: req.body.conversationId },
       {

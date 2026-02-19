@@ -9,17 +9,14 @@ const CheckoutForm = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulation: 4-second "Processing" delay
     setTimeout(() => {
       setIsLoading(false);
-      // Skip the success page and go straight to Orders
       navigate("/orders");
     }, 4000);
   };
 
   return (
     <div className="relative">
-      {/* Processing Overlay to prevent user interaction/refresh */}
       {isLoading && (
         <div className="absolute inset-0 z-50 bg-white/90 flex flex-col items-center justify-center rounded-[2rem] text-center p-6">
           <div className="w-12 h-12 border-4 border-[#0a1b1b] border-t-transparent rounded-full animate-spin mb-4"></div>

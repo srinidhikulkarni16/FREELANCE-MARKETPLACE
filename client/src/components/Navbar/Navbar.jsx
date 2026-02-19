@@ -51,8 +51,6 @@ function Navbar() {
           <span className="whitespace-nowrap font-normal text-xl cursor-pointer">
             NYX Business
           </span>
-          
-          {/* --- CHANGE: Explore now links to Gigs (Marketplace) --- */}
           <Link to="/gigs" className="no-underline text-inherit">
             <span className="whitespace-nowrap font-normal text-xl">Explore</span>
           </Link>
@@ -118,7 +116,6 @@ function Navbar() {
         <>
           <hr className="w-full border-t-[0.5px] border-solid border-white/25 m-0" />
           <div className="w-full py-[10px] px-0 flex justify-evenly font-light text-gray-500 text-lg">
-            {/* --- CHANGE: Updated category links to use /gigs?cat= --- */}
             <Link className="no-underline text-gray-500 hover:text-white text-lg" to="/gigs?cat=design">Graphics & Design</Link>
             <Link className="no-underline text-gray-500 hover:text-white text-lg" to="/gigs?cat=video">Video & Animation</Link>
             <Link className="no-underline text-gray-500 hover:text-white text-lg" to="/gigs?cat=writing">Writing & Translation</Link>

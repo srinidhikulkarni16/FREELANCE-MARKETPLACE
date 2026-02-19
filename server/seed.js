@@ -22,7 +22,6 @@ const seedData = async () => {
     const transformedGigs = gigs.map((gig) => ({
       userId: new mongoose.Types.ObjectId(),
 
-      // Main fields
       title: gig.desc,
       desc: gig.desc,
       price: gig.price,
@@ -30,11 +29,9 @@ const seedData = async () => {
       cover: gig.img,
       images: [],
 
-      // Rating fields
       totalStars: Math.round(gig.star * gig.reviewCount),
       starNumber: gig.reviewCount,
 
-      // ✅ Required schema fields
       shortTitle: gig.desc.substring(0, 30),
       shortDesc: gig.desc.substring(0, 80),
       deliveryTime: Math.floor(Math.random() * 7) + 1, // 1–7 days
@@ -43,7 +40,7 @@ const seedData = async () => {
 
     await Gig.insertMany(transformedGigs);
 
-    console.log("✅ Gigs seeded successfully");
+    console.log("Gigs seeded successfully");
     process.exit();
   } catch (err) {
     console.error(err);

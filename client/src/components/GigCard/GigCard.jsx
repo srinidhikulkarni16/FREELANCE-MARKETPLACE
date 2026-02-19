@@ -2,10 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@heroicons/react/24/solid";
 
-// 1. Add hideImage to the destructured props
 const GigCard = ({ item, hideImage }) => {
   
-  // 2. Fix for review count visibility
   const reviews = item.starNumber || item.reviewCount || 0;
   const rating = item.starNumber > 0 
     ? (item.totalStars / item.starNumber).toFixed(1) 
@@ -15,7 +13,6 @@ const GigCard = ({ item, hideImage }) => {
     <Link to={`/gig/${item._id || item.id}`} className="group">
       <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full shadow-sm">
         
-        {/* 3. Wrap the image div in this condition */}
         {!hideImage && (
           <div className="h-48 overflow-hidden">
             <img 
@@ -43,7 +40,6 @@ const GigCard = ({ item, hideImage }) => {
           <div className="flex items-center gap-1 text-yellow-500 mt-auto">
             <StarIcon className="h-4 w-4" />
             <span className="font-bold text-sm">{rating}</span>
-            {/* REVIEW COUNT IS NOW VISIBLE HERE */}
             <span className="text-gray-400 text-xs ml-1">({reviews})</span>
           </div>
         </div>

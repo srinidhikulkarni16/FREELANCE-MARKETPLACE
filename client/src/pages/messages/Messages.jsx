@@ -5,11 +5,9 @@ import newRequest from "../../Services/NewReq";
 import moment from "moment";
 
 const Messages = () => {
-  // Get the logged-in user from local storage
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const queryClient = useQueryClient();
 
-  // 1. Fetch all conversations from the backend
   const { isLoading, error, data } = useQuery({
     queryKey: ["conversations"],
     queryFn: () =>
@@ -18,7 +16,6 @@ const Messages = () => {
       }),
   });
 
-  // 2. Mutation to update the 'read' status in the database
   const mutation = useMutation({
     mutationFn: (id) => {
       return newRequest.put(`/conversations/${id}`);
@@ -67,7 +64,7 @@ const Messages = () => {
                   } hover:bg-gray-50`}
                 >
                   <td className="p-[10px] font-medium">
-                    {/* Display the ID of the other participant */}
+
                     {currentUser.isSeller ? c.buyerId : c.sellerId}
                   </td>
                   <td className="p-[10px] text-gray-500">
@@ -79,11 +76,10 @@ const Messages = () => {
                     </Link>
                   </td>
                   <td className="p-[10px] text-gray-500">
-                    {/* Use moment to format the backend timestamp */}
+                    
                     {moment(c.updatedAt).fromNow()}
                   </td>
                   <td className="p-[10px]">
-                    {/* Only show "Mark as Read" if there are unread messages for this user */}
                     {((currentUser.isSeller && !c.readBySeller) ||
                       (!currentUser.isSeller && !c.readByBuyer)) && (
                       <button

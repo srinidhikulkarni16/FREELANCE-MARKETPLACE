@@ -2,10 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
-    /* Added id="footer" here */
+    
     <div id="footer" className="flex justify-center bg-white py-12 px-4 border-t border-gray-100">
       <div className="max-w-[1400px] w-full">
-        {/* Top Section: Links Grid */}
         <div className="flex flex-wrap justify-between gap-8">
           <div className="flex flex-col gap-4 min-w-[160px]">
             <h2 className="text-base font-bold text-[#404145]">Categories</h2>

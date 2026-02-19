@@ -1,4 +1,4 @@
-// server/models/order.model.js
+
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({

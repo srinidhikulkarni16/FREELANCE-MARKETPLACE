@@ -4,24 +4,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../Services/NewReq";
 
 function Message() {
-  const { id } = useParams(); // This is the Conversation ID
+  const { id } = useParams(); 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const queryClient = useQueryClient();
 
-  // 1. Fetch messages for this specific conversation
   const { isLoading, error, data } = useQuery({
     queryKey: ["messages", id],
     queryFn: () =>
       newRequest.get(`/messages/${id}`).then((res) => res.data),
   });
 
-  // 2. Mutation to send a new message
   const mutation = useMutation({
     mutationFn: (message) => {
       return newRequest.post(`/messages`, message);
     },
     onSuccess: () => {
-      // Refresh the chat window immediately after sending
       queryClient.invalidateQueries(["messages", id]);
     },
   });
@@ -29,13 +26,13 @@ function Message() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const desc = e.target[0].value;
-    if (!desc) return; // Don't send empty messages
+    if (!desc) return; 
 
     mutation.mutate({
       conversationId: id,
       desc: desc,
     });
-    e.target[0].value = ""; // Clear textarea
+    e.target[0].value = ""; 
   };
 
   return (
@@ -58,7 +55,6 @@ function Message() {
                   m.userId === currentUser._id ? "flex-row-reverse self-end" : ""
                 }`}
               >
-                {/* User Avatar - using a placeholder if image is missing */}
                 <img 
                   src="/img/noavatar.jpg" 
                   alt="" 
@@ -78,7 +74,6 @@ function Message() {
 
         <hr className="h-0 border-[0.5px] border-[#e8e6e6] mb-[20px]" />
 
-        {/* Input Form */}
         <form onSubmit={handleSubmit} className="flex items-center justify-between gap-4">
           <textarea
             placeholder="Write a message..."
