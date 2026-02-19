@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../Services/NewReq";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const Success = () => {
   const { search } = useLocation();
@@ -12,48 +11,24 @@ const Success = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        // Confirms the order in the database
         await newRequest.put("/orders", { payment_intent });
-        
-        // Redirect after a short delay so the user sees the success message
         setTimeout(() => {
           navigate("/orders");
         }, 3000);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) { console.log(err); }
     };
-
-    if (payment_intent) {
-      makeRequest();
-    }
-  }, [payment_intent, navigate]);
+    makeRequest();
+  }, []);
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4">
-      <div className="max-w-md w-full text-center space-y-6 p-10 bg-white rounded-[2.5rem] shadow-2xl border border-gray-50">
-        <div className="flex justify-center">
-          <CheckCircleIcon className="h-20 w-20 text-[#0a1b1b]" />
-        </div>
-        
-        <div className="space-y-2">
-          <h1 className="text-3xl font-extrabold text-gray-900">Payment Successful!</h1>
-          <p className="text-gray-500 font-medium leading-relaxed">
-            Thank you for your purchase. We are finalizing your order details now.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center gap-4 pt-4">
-          <div className="w-12 h-12 border-4 border-[#0a1b1b] border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-[#0a1b1b] font-bold text-sm tracking-widest uppercase">
-            Redirecting to Orders...
-          </p>
-        </div>
-
-        <p className="text-xs text-gray-400 italic">
-          Please do not close or refresh this page.
-        </p>
+    <div className="py-40 text-center flex flex-col items-center gap-4">
+      <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+        </svg>
       </div>
+      <h1 className="text-2xl font-bold">Payment Successful!</h1>
+      <p className="text-gray-500">You are being redirected to your orders page. Please do not close the tab.</p>
     </div>
   );
 };

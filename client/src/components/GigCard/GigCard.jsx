@@ -1,76 +1,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { StarIcon } from "@heroicons/react/24/solid";
 
-const GigCard = ({ item }) => {
+// 1. Add hideImage to the destructured props
+const GigCard = ({ item, hideImage }) => {
+  
+  // 2. Fix for review count visibility
+  const reviews = item.starNumber || item.reviewCount || 0;
+  const rating = item.starNumber > 0 
+    ? (item.totalStars / item.starNumber).toFixed(1) 
+    : (item.star || "5.0");
+
   return (
-    <Link to={`/gig/${item._id}`}
-      className="link group"> 
-      <div className="w-[324px] min-h-[420px] border border-[#e4e4e4] mb-[40px] flex flex-col justify-between">
+    <Link to={`/gig/${item._id || item.id}`} className="group">
+      <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full shadow-sm">
         
-        <div>
-          {/* Main Image */}
-          <img
-            src={item.img}
-            alt=""
-            className="w-full h-[180px] object-cover"
-          />
+        {/* 3. Wrap the image div in this condition */}
+        {!hideImage && (
+          <div className="h-48 overflow-hidden">
+            <img 
+              src={item.cover || item.img} 
+              alt="" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        )}
 
-          <div className="px-[20px] py-[15px] flex flex-col gap-[15px]">
-            
-            {/* User */}
-            <div className="flex items-center gap-[10px]">
-              <img
-                src={item.pp || "/img/noavatar.jpg"}
-                alt=""
-                className="w-[26px] h-[26px] rounded-full object-cover"
-              />
-              <span className="text-[14px] font-bold text-[#313131]">
-                {item.username}
-              </span>
-            </div>
+        <div className="p-5 flex flex-col gap-3 flex-1">
+          <div className="flex items-center gap-2">
+            <img 
+              src={item.pp || "/img/noavatar.jpg"} 
+              className="w-6 h-6 rounded-full object-cover" 
+              alt="seller" 
+            />
+            <span className="text-xs font-bold text-gray-700">{item.username || "Seller"}</span>
+          </div>
+          
+          <p className="text-gray-600 font-semibold text-sm line-clamp-2 leading-snug">
+            {item.desc}
+          </p>
 
-            {/* Description */}
-            <p className="text-[#111] text-[15px] leading-6 line-clamp-2">
-              {item.desc}
-            </p>
-
-            {/* Star */}
-            <div className="flex items-center gap-[5px]">
-              <img
-                src="./img/star.png"
-                alt=""
-                className="w-[14px] h-[14px]"
-              />
-              <span className="text-[14px] font-bold text-[#313131]">
-                {item.star}
-              </span>
-            </div>
-
-            {/* THE MISSING ELEMENT: Animated Bar */}
-            <div className="w-10 h-[2px] bg-gray-300 group-hover:bg-[#1a2e2e] group-hover:w-14 transition-all duration-300"></div>
+          <div className="flex items-center gap-1 text-yellow-500 mt-auto">
+            <StarIcon className="h-4 w-4" />
+            <span className="font-bold text-sm">{rating}</span>
+            {/* REVIEW COUNT IS NOW VISIBLE HERE */}
+            <span className="text-gray-400 text-xs ml-1">({reviews})</span>
           </div>
         </div>
 
-        <div>
-          <hr className="border-[0.5px] border-[#e4e4e4]" />
-
-          {/* Detail Section */}
-<div className="px-[20px] py-[10px] flex items-center justify-between">
-  <div className="flex flex-col">
-    <span className="text-[#999] text-[10px] font-bold uppercase tracking-wider">
-      STARTING AT
-    </span>
-    <h2 className="text-[#555] text-[20px] font-semibold">
-      ₹{item.price.toLocaleString('en-IN')}
-    </h2>
-  </div>
-  {/* Optional Heart Icon */}
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-  </svg>
-</div>
+        <div className="px-5 py-3 border-t border-gray-50 flex justify-between items-center bg-gray-50/50">
+          <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Starting at</span>
+          <span className="text-lg font-black text-gray-900">₹{item.price.toLocaleString("en-IN")}</span>
         </div>
-
       </div>
     </Link>
   );

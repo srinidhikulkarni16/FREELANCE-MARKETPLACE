@@ -1,23 +1,10 @@
-import createError from "../utils/createError.js";
 import Order from "../models/order.model.js";
 import Gig from "../models/gig.model.js";
-import Stripe from "stripe";
 
 export const intent = async (req, res, next) => {
-  const stripe = new Stripe(process.env.STRIPE);
-
   try {
     const gig = await Gig.findById(req.params.id);
-    if (!gig) return next(createError(404, "Gig not found!"));
-
-    // Integrated the *100 logic and currency from your screenshots
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: gig.price * 100,
-      currency: "usd", // Set to USD as per your checkout session screenshot
-      automatic_payment_methods: {
-        enabled: true,
-      },
-    });
+    const mockPaymentIntentId = "pi_mock_" + Math.random().toString(36).slice(5);
 
     const newOrder = new Order({
       gigId: gig._id,
@@ -26,19 +13,33 @@ export const intent = async (req, res, next) => {
       buyerId: req.userId,
       sellerId: gig.userId,
       price: gig.price,
-      payment_intent: paymentIntent.id,
+      payment_intent: mockPaymentIntentId,
+      isCompleted: false,
     });
 
     await newOrder.save();
 
     res.status(200).send({
-      clientSecret: paymentIntent.client_secret,
+      clientSecret: mockPaymentIntentId + "_secret_123",
     });
   } catch (err) {
     next(err);
   }
 };
 
+export const confirm = async (req, res, next) => {
+  try {
+    await Order.findOneAndUpdate(
+      { payment_intent: req.body.payment_intent },
+      { $set: { isCompleted: true } }
+    );
+    res.status(200).send("Order has been confirmed.");
+  } catch (err) {
+    next(err);
+  }
+};
+
+// ADD THIS FUNCTION HERE
 export const getOrders = async (req, res, next) => {
   try {
     const orders = await Order.find({
@@ -47,25 +48,6 @@ export const getOrders = async (req, res, next) => {
     });
 
     res.status(200).send(orders);
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const confirm = async (req, res, next) => {
-  try {
-    const orders = await Order.findOneAndUpdate(
-      {
-        payment_intent: req.body.payment_intent,
-      },
-      {
-        $set: {
-          isCompleted: true,
-        },
-      }
-    );
-
-    res.status(200).send("Order has been confirmed.");
   } catch (err) {
     next(err);
   }

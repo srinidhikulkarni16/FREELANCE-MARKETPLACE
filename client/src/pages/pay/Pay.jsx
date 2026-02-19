@@ -1,39 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import CheckoutForm from "../../components/CheckOutForm/CheckoutForm";
-import newRequest from "../../Services/NewReq";
-
-const stripePromise = loadStripe("your_stripe_public_key");
 
 const Pay = () => {
-  const [clientSecret, setClientSecret] = useState("");
-  const { id } = useParams();
-
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await newRequest.post(`/orders/create-payment-intent/${id}`);
-        setClientSecret(res.data.clientSecret);
-      } catch (err) { console.log(err); }
-    };
-    makeRequest();
-  }, [id]);
+  // We remove the useEffect calling create-payment-intent to avoid backend errors
+  // while you are in simulation mode.
 
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center items-center py-20">
       <div className="max-w-md w-full bg-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-100">
-        <h2 className="text-2xl font-bold mb-8 text-[#0a1b1b] text-center">Complete Payment</h2>
-        {clientSecret ? (
-          <Elements options={{ clientSecret, appearance: { theme: 'stripe', variables: { colorPrimary: '#0a1b1b' } } }} stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
-        ) : (
-          <div className="flex flex-col items-center py-10 gap-4">
-             <div className="w-8 h-8 border-4 border-[#0a1b1b] border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-[#0a1b1b]">Secure Checkout</h2>
+          <p className="text-gray-400 text-sm mt-1">Enter your bank details to proceed</p>
+        </div>
+        
+        <CheckoutForm />
+
+        <div className="mt-8 flex items-center justify-center gap-2 opacity-30">
+          <span className="text-[10px] font-bold tracking-widest uppercase">Encrypted</span>
+          <div className="h-px w-8 bg-gray-400"></div>
+          <span className="text-[10px] font-bold tracking-widest uppercase">Secure</span>
+        </div>
       </div>
     </div>
   );

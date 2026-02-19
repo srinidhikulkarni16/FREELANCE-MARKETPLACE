@@ -102,7 +102,7 @@ function Navbar() {
           ) : (
             <>
               <Link to="/login" className="no-underline text-inherit text-xl">
-                Sign in
+                Log in
               </Link>
               <Link className="no-underline text-inherit" to="/register">
                 <button className="text-white py-[10px] px-5 rounded-md border border-solid border-white cursor-pointer bg-transparent hover:bg-[#444d4d] hover:border-[#5d8080] text-xl">

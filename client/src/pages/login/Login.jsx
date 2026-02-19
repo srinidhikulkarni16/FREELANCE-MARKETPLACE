@@ -15,7 +15,7 @@ function Login() {
     try {
       const res = await newRequest.post("/auth/login", { email, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
-      navigate("/");
+      navigate("/user");;
     } catch (err) {
       console.error("Login Error Details:", err.response?.data);
       setError(err.response?.data || "Something went wrong!");
@@ -72,9 +72,13 @@ function Login() {
 
           {error && (
             <div className="bg-red-50 border-l-4 border-red-500 p-3 mt-2">
-              <span className="text-red-600 text-sm font-medium">{error}</span>
+              <span className="text-red-600 text-sm font-medium">
+                {typeof error === "string" ? error : error.message}
+              </span>
             </div>
           )}
+
+
         </form>
       </div>
     </div>

@@ -7,10 +7,11 @@ import Slide from "./components/Slide/Slide";
 import Home from "./pages/home/Home";
 import Gigs from "./pages/Gigs/Gigs";
 import Gig from "./pages/Gig/Gig";
-import Login from "./pages/Login/Login";
+import Login from "./pages/login/Login";
 import Register from "./pages/Register/Register";
+import User from "./pages/User/user";
 import Add from "./pages/Add/Add";
-import Orders from "./pages/Orders/Orders";
+import Orders from "./pages/orders/orders";
 import Messages from "./pages/Messages/Messages";
 import Message from "./pages/Message/Message";
 import MyGigs from "./pages/MyGigs/MyGigs";
@@ -71,8 +72,12 @@ function App() {
           element: <Pay />,
         },
         {
-          path: "/success", // 2. Add the success route
+          path: "/success",
           element: <Success />,
+        },
+        {
+          path: "/user",
+          element: <User />, // <-- NEW: user dashboard page
         },
       ],
     },

@@ -2,7 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="flex justify-center bg-white py-12 px-4 border-t border-gray-100">
+    /* Added id="footer" here */
+    <div id="footer" className="flex justify-center bg-white py-12 px-4 border-t border-gray-100">
       <div className="max-w-[1400px] w-full">
         {/* Top Section: Links Grid */}
         <div className="flex flex-wrap justify-between gap-8">
@@ -63,7 +64,6 @@ function Footer() {
 
         <hr className="my-8 border-gray-200" />
 
-        {/* Bottom Section: Logo and Settings */}
         <div className="flex flex-wrap items-center justify-center gap-6">
           <div className="flex items-center gap-6">
             <h2 className="text-2xl font-bold text-[#74767e]">NYX</h2>
